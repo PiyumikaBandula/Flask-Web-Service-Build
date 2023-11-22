@@ -5,7 +5,7 @@ app=Flask(__name__)
 
 @app.route('/')
 def homepage():
-    return render_template("zindex.html")
+    return render_template("index.html")
 
 @app.route("/weatherapp", methods=["POST", "GET"])
 def get_weatherdata():
