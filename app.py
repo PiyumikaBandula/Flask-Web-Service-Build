@@ -1,35 +1,26 @@
 from flask import Flask, render_template, request
 import requests
-import os
 
-app = Flask(__name__)
-
+app=Flask(__name__)
 
 @app.route('/')
 def homepage():
-    return render_template('index.html')
+    return render_template("zindex.html")
 
+@app.route("/weatherapp", methods=["POST", "GET"])
+def get_weatherdata():
+    url="https://api.openweathermap.org/data/2.5/weather"
 
-@app.route('/get_weather', methods=['POST'])
-def get_weather():
-    api_key = os.getenv('6d1057d6d3c351b52cb25a836a489eff')  # Set your API key as an environment variable
-    city = request.form.get('city')
-
-    if not city:
-        return 'Please provide a city.'
-
-    url = 'https://api.openweathermap.org/data/2.5/weather'
-    params = {
-        'q': city,
-        'appid': api_key,
-        'units': 'metric',  # You can adjust units as needed
+    params ={
+        'q':request.form.get("city"),
+        'appid':request.form.get('appid'),
+        'units':request.form.get('units')
     }
-
-    response = requests.get(url, params=params)
+    response=requests.get(url, params=params)
     data = response.json()
-
-    return f'Temperature in {city}: {data["main"]["temp"]}°C'
+    city=data['name']
+    return f"data : {data}, city:{city}"
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
