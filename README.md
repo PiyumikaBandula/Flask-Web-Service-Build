@@ -16,9 +16,9 @@ Then the application interacts with the News API and renders title, description,
 
 Further it facilitates the user to click on each url and navigate to the original news source if necessary.
 
-<img src="images/front-end.png" width="200px" height= "100px">
+<img src="images/front-end.png" width="500px" height= "300px">
 
-<img src="images/search-results.png" width="200px" height= "100px">
+<img src="images/search-results.png" width="500px" height= "300px">
 
 ### Deployment
 
