@@ -1,6 +1,6 @@
 # Flask-Web-Service-Build
 
-## Building a Web Service with Flask to talk to News API "" and Deploying it on Github/Render.
+## Building a Web Service with Flask to talk to News API "https://newsapi.org/" and Deploying it on Github/Render.
 
 ### API
 
@@ -16,9 +16,9 @@ Then the application interacts with the News API and renders title, description,
 
 Further it facilitates the user to click on each url and navigate to the original news source if necessary.
 
-<img src="images/front-end.png">
+<img src="images/front-end.png" width="200px" height= "100px">
 
-<img src="images/search-results.png">
+<img src="images/search-results.png" width="200px" height= "100px">
 
 ### Deployment
 
