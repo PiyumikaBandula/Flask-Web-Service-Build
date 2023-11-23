@@ -15,17 +15,10 @@ def get_weatherdata():
         'apiKey':request.form.get("appid")
     }
     response=requests.get(url, params=params)
-    data = response.json()
-    status = data['status']
-    results=data['totalResults']
-    articles=data['articles']
-    s=''
-    for i in range(len(articles)):
-        if articles[i][request.form.get("info")]:
-            s += "<div><p>" + articles[i][request.form.get("info")] + "</p></div>"
-    return (f"<div><p>status : {status} </p></div>"
-            f"<div><p>totalResults: {results} </p></div>"
-            f"<div><p>{s}</p></div>")
+    data = response.json()  #Parse json to data
+    articles=data['articles']   # Assign articles list to articles list
+
+    return (render_template("index.html", random=articles))
 
 
 if __name__=='__main__':

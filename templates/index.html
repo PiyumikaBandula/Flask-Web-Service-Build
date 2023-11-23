@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+
+    <title>News Dump C0900440</title>
 </head>
-<body>
-    <title>Search Page</title>
-    <div class="content" style="border: solid black; height: 100%vh;">
-        <h1>Welcome to News Digger!</h1>
-        <h3>This application provides news articles on any keyword you search for. Let's begin!</h3>
-        <h3>Step 1: Enter Any keyword you like to search. </h3>
-        <h3>Step 2: Enter your API KEY from <a>https://newsapi.org/docs/authentication</a></h3>
-        <h3>Step 3: Select the type of information you would like to see.</h3>
-        <div class="form">
+<body style="background-color: beige">
+    <div class="content">
+        <h1 style="text-align:center; color:red;">News Dump</h1>
+        <h5 style="text-align:center; color:grey;">This application provides news articles on any keyword you search for. Let's begin!</h5>
+        <div class="form" style="text-align:center">
             <form action="/index" method="POST">
-                <label for ='keyword'>Key Word: <label>
-                <input type="text" name="keyword" id="keyword"><br><br>
-                <label for ='appid'>Enter your API Key: <label>
-                <input type="text" name="appid" id="appid"><br><br>
-                <label for ='info'>Select what you need to see: </label>
-                <select name="info" id="info">
-                    <option value="title">Titles</option>
-                    <option value="author">Authors</option>
-                    <option value="description">News</option>
-                    <option value="url">URL</option>
-                </select><br><br>
-                <input type= "submit" value="Search">
+                <label for ='keyword'>Key Word: </label>
+                <input type="text" name="keyword" id="keyword">
+                <label for ='appid'>Enter your API Key: </label>
+                <input type="text" name="appid" id="appid">
+                <input type= "submit" value="Search"><br><br>
            </form>
         </div>
+        {% block content %}
+
+            <div class="container-fluid landing">
+                <div class="row">
+                    {% for i in random %}
+                    <!-- For each item in the articles list fetched, create a card displaying its elements-->
+                    <!-- title, url, urlToImage, description, author, publishedAt date.-->
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <div class="card mb-3 bg-dark text-white">
+                            <img src="{{ i.urlToImage }}" class="card-img image-fluid" alt="...">
+                            <div class="card-body">
+                                <p class="card-text source">{{ i.source.name }}</p>
+                                <a href="{{ i.url }}">
+                                    <h5 class="card-title"><b> {{ i.title }} </b></h5>
+                                </a>
+                                <p class="card-text">{{ i.description }}</p>
+                                <p class="card-text"><i class="fas fa-user"></i> Author: {{ i.author }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text published"><i class="fa fa-calendar"></i> Date Published: {{ i.publishedAt }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% endblock %}
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 </html>
