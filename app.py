@@ -7,20 +7,26 @@ app=Flask(__name__)
 def homepage():
     return render_template("index.html")
 
-@app.route("/weatherapp", methods=["POST", "GET"])
+@app.route("/index", methods=["POST", "GET"])
 def get_weatherdata():
-    url="https://api.openweathermap.org/data/2.5/weather"
-
+    url="https://newsapi.org/v2/everything"
     params ={
-        'q':request.form.get("city"),
-        'appid':request.form.get('appid'),
-        'units':request.form.get('units')
+        'q':request.form.get("keyword"),
+        'apiKey':request.form.get("appid")
     }
     response=requests.get(url, params=params)
     data = response.json()
-    city=data['name']
-    return f"data : {data}, city:{city}"
+    status = data['status']
+    results=data['totalResults']
+    articles=data['articles']
+    s=''
+    for i in range(len(articles)):
+        if articles[i][request.form.get("info")]:
+            s += "<div><p>" + articles[i][request.form.get("info")] + "</p></div>"
+    return (f"<div><p>status : {status} </p></div>"
+            f"<div><p>totalResults: {results} </p></div>"
+            f"<div><p>{s}</p></div>")
 
 
-if __name__ == '__main__':
+if __name__=='__main__':
     app.run(host="0.0.0.0", port=5000)

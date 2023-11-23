@@ -4,19 +4,27 @@
 </head>
 <body>
     <title>Search Page</title>
-    <div class="content">
-        <h1 style="text-align: center">Search</h1>
-
+    <div class="content" style="border: solid black; height: 100%vh;">
+        <h1>Welcome to News Digger!</h1>
+        <h3>This application provides news articles on any keyword you search for. Let's begin!</h3>
+        <h3>Step 1: Enter Any keyword you like to search. </h3>
+        <h3>Step 2: Enter your API KEY from <a>https://newsapi.org/docs/authentication</a></h3>
+        <h3>Step 3: Select the type of information you would like to see.</h3>
         <div class="form">
-            <form action="/weatherapp" method="POST">
-                <label for ='city'>Enter City: <label>
-                <input type="text" name="city" id="city">
+            <form action="/index" method="POST">
+                <label for ='keyword'>Key Word: <label>
+                <input type="text" name="keyword" id="keyword"><br><br>
                 <label for ='appid'>Enter your API Key: <label>
-                <input type="text" name="appid" id="appid">
-                <label for ='units'>Enter units : <label>
-                <input type="text" name="units" id="units">
+                <input type="text" name="appid" id="appid"><br><br>
+                <label for ='info'>Select what you need to see: </label>
+                <select name="info" id="info">
+                    <option value="title">Titles</option>
+                    <option value="author">Authors</option>
+                    <option value="description">News</option>
+                    <option value="url">URL</option>
+                </select><br><br>
                 <input type= "submit" value="Search">
-            </form>
+           </form>
         </div>
     </div>
 </body>
