@@ -24,3 +24,22 @@ Further it facilitates the user to click on each url and navigate to the origina
 
 This application is deployed on render at https://flaskwebservice.onrender.com/.
 
+## Setting up development environment
+
+Following is performed in PyCharm IDE.
+
+Install Flask in the path File > Settings > Python Interpreter > Flask > Install
+
+<img src="images/flask-install.png">
+
+<img src="images/flask-installed.png">
+
+<img src="images/python-interpreter.png">
+
+Package requirements requests and gunicorn will need to be installed.
+
+<img src="images/requiremenets.png">
+
+<img src="images/requiremenets-installed.png">
+
+
