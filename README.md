@@ -2,7 +2,7 @@
 
 ## Building a Web Service with Flask to talk to News API "https://newsapi.org/" and Deploying it on Github/Render.
 
-### technologies Used
+### Technologies Used
 * Flask for Web Service
 * BeautifulSoup and Requests for web scraping
 * HTML/CSS/Bootstrap for UI development.
